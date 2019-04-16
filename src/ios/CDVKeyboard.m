@@ -185,7 +185,7 @@ static IMP WKOriginalImp;
     // if the webview is below the status bar, offset and shrink its frame
     if ([self settingForKey:@"StatusBarOverlaysWebView"] != nil && ![[self settingForKey:@"StatusBarOverlaysWebView"] boolValue]) {
         CGRect full, remainder;
-        CGRectDivide(screen, &remainder, &full, statusBar.size.height, CGRectMinYEdge);
+//         CGRectDivide(screen, &remainder, &full, statusBar.size.height, CGRectMinYEdge);
         screen = full;
     }
 
