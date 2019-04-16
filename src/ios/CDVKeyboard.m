@@ -185,7 +185,7 @@ static IMP WKOriginalImp;
     // if the webview is below the status bar, offset and shrink its frame
     if ([self settingForKey:@"StatusBarOverlaysWebView"] != nil && ![[self settingForKey:@"StatusBarOverlaysWebView"] boolValue]) {
         CGRect full, remainder;
-//         CGRectDivide(screen, &remainder, &full, statusBar.size.height, CGRectMinYEdge);
+        CGRectDivide(screen, &remainder, &full, statusBar.size.height, CGRectMinYEdge);
         screen = full;
     }
 
@@ -195,7 +195,9 @@ static IMP WKOriginalImp;
     // The webview should always be able to return to full size
     CGRect keyboardIntersection = CGRectIntersection(screen, keyboard);
     if (CGRectContainsRect(screen, keyboardIntersection) && !CGRectIsEmpty(keyboardIntersection) && _shrinkView && self.keyboardIsVisible) {
-//         screen.size.height -= keyboardIntersection.size.height;
+        screen.size.height -= keyboardIntersection.size.height;
+             screen.size.height -= keyboardIntersection.size.height;
+
         self.webView.scrollView.scrollEnabled = !self.disableScrollingInShrinkView;
     }
 
