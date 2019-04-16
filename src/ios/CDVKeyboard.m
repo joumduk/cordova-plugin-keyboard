@@ -195,7 +195,7 @@ static IMP WKOriginalImp;
     // The webview should always be able to return to full size
     CGRect keyboardIntersection = CGRectIntersection(screen, keyboard);
     if (CGRectContainsRect(screen, keyboardIntersection) && !CGRectIsEmpty(keyboardIntersection) && _shrinkView && self.keyboardIsVisible) {
-        screen.size.height -= 500px;
+        screen.size.height -= keyboardIntersection.size.height;
         self.webView.scrollView.scrollEnabled = !self.disableScrollingInShrinkView;
     }
 
@@ -208,11 +208,11 @@ static IMP WKOriginalImp;
 - (void)scrollViewDidScroll:(UIScrollView*)scrollView
 {
     if (_shrinkView && _keyboardIsVisible) {
-        CGFloat maxY = scrollView.contentSize.height - scrollView.bounds.size.height;
-        if (scrollView.bounds.origin.y > maxY) {
+//         CGFloat maxY = scrollView.contentSize.height - scrollView.bounds.size.height;
+//         if (scrollView.bounds.origin.y > maxY) {
 //             scrollView.bounds = CGRectMake(scrollView.bounds.origin.x, maxY,
 //                                            scrollView.bounds.size.width, scrollView.bounds.size.height);
-        }
+//         }
     }
 }
 
